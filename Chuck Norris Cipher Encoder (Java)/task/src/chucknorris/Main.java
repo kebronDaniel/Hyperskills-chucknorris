@@ -13,17 +13,19 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input string: ");
         String userInput = scanner.nextLine();
-        System.out.println("The result:");
         String bitRepresentation = "";
         String firstBlockZero="00";
         String firstBlockOne="0";
         for (int i = 0; i < userInput.length(); i++) {
             char x = userInput.charAt(i);
-            int binary = Integer.parseInt(Integer.toBinaryString(x));
+            String binary = Integer.toBinaryString(x);
+            if (binary.length() < 7) {
+                binary = "0" + binary;
+            }
 //            System.out.printf("%c = %07d\n",x,Integer.parseInt(Integer.toBinaryString(x)));
             bitRepresentation = bitRepresentation + binary;
         }
-        System.out.println(bitRepresentation);
+//        System.out.println(bitRepresentation);
         String chuckNorrisCode = "";
         for (int i = 0; i < bitRepresentation.length(); i++) {
             int count = 1;
@@ -32,7 +34,7 @@ public class Main {
                 i++;
                 count++;
             }
-            System.out.println(bitRepresentation.charAt(i) + "Has count of " + count);
+//            System.out.println(bitRepresentation.charAt(i) + "Has count of " + count);
 
             if (bitRepresentation.charAt(i) == '1'){
                 chuckNorrisCode = chuckNorrisCode + firstBlockOne + " ";
@@ -44,10 +46,11 @@ public class Main {
                 chuckNorrisCode = chuckNorrisCode + "0";
             }
             chuckNorrisCode = chuckNorrisCode + " ";
-            System.out.println(chuckNorrisCode);
+//            System.out.println(chuckNorrisCode);
 
         }
-        System.out.println("Chuck Norris Code : " + chuckNorrisCode);
+        System.out.println("The result: ");
+        System.out.println(chuckNorrisCode);
     }
 
 
